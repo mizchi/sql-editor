@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import "./App.css";
 
 import * as monaco from "monaco-editor";
 
@@ -30,7 +29,7 @@ function App() {
 
   return (
     <>
-      <div style={{ width: "100vw", height: "100vh" }} ref={ref}></div>
+      <div style={{ width: "100%", height: "100%" }} ref={ref}></div>
     </>
   );
 }
