@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useRef } from "react";
+import "./App.css";
+
+import * as monaco from "monaco-editor";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!ref.current) return;
+    const editor = monaco.editor.create(ref.current, {
+      value: 'select * from "table_name";',
+      language: "sql",
+      theme: "vs-dark",
+      minimap: {
+        enabled: false,
+      },
+    });
+    const observer = new ResizeObserver((_entries) => {
+      editor.layout({
+        width: ref.current?.clientWidth!,
+        height: ref.current?.clientHeight!,
+      });
+    });
+    observer.observe(ref.current);
+    return () => {
+      editor.dispose();
+      observer.disconnect();
+    };
+  }, [ref.current]);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div style={{ width: "100vw", height: "100vh" }} ref={ref}></div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
