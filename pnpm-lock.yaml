@@ -15,6 +15,9 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
+      '@electric-sql/pglite':
+        specifier: ^0.2.13
+        version: 0.2.13
       '@eslint/js':
         specifier: ^9.13.0
         version: 9.15.0
@@ -152,6 +155,9 @@ packages:
   '@babel/types@7.26.0':
     resolution: {integrity: sha512-Z/yiTPj+lDVnF7lWeKCIJzaIkI0vYO87dMpZ4bg4TDrFe4XXLFWL1TbXU27gBP3QccxV9mZICCrnjnYlJjXHOA==}
     engines: {node: '>=6.9.0'}
+
+  '@electric-sql/pglite@0.2.13':
+    resolution: {integrity: sha512-YRY806NnScVqa21/1L1vaysSQ+0/cAva50z7vlwzaGiBOTS9JhdzIRHN0KfgMhobFAphbznZJ7urMso4RtMBIQ==}
 
   '@esbuild/aix-ppc64@0.21.5':
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
@@ -1475,6 +1481,8 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
+
+  '@electric-sql/pglite@0.2.13': {}
 
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
